@@ -1,10 +1,5 @@
 <?php include 'includes/db.php'; ?>
 
-<?php
-$query = "SELECT * FROM dispatch_records ORDER BY created_at DESC LIMIT 10";
-$result = $conn->query($query);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

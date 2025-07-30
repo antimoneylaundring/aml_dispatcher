@@ -1,15 +1,20 @@
 <?php include 'includes/db.php'; ?>
 <?php
-$where = "WHERE 1=1";
+$where = [];
 
 if (!empty($_GET['group_name'])) {
     $group_name = $conn->real_escape_string($_GET['group_name']);
-    $where .= " AND group_name LIKE '%$group_name%'";
+    $where[] = "group_name COLLATE utf8mb4_general_ci LIKE '%$group_name%'";
 }
 
 if (!empty($_GET['url'])) {
     $url = $conn->real_escape_string($_GET['url']);
-    $where .= " AND url LIKE '%$url%'";
+    $where[] = "url COLLATE utf8mb4_general_ci LIKE '%$url%'";
+}
+
+$where_sql = "";
+if (!empty($where)) {
+    $where_sql = "WHERE " . implode(" AND ", $where);
 }
 
 $limit = 20;
@@ -18,20 +23,49 @@ $page = max($page, 1);
 $offset = ($page - 1) * $limit;
 
 // Count query
-$count_sql = "SELECT COUNT(*) as total FROM all_credentials $where";
+$count_sql = "SELECT COUNT(*) as total FROM all_credentials $where_sql";
 $count_result = $conn->query($count_sql);
 $total = $count_result->fetch_assoc()['total'];
 $total_pages = ceil($total / $limit);
 
 // Data query
-$sql = "SELECT * FROM all_credentials $where ORDER BY date DESC LIMIT $offset, $limit";
-$result = $conn->query($sql);
-?>
+$sql = "SELECT * FROM all_credentials $where_sql LIMIT $offset, $limit";
 
+$result = $conn->query($sql);
+
+if (isset($_GET['export'])) {
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment;filename=filtered_credentials.csv');
+
+    $group_url = isset($_GET['group_name']) ? $_GET['group_name'] : '';
+    $url = isset($_GET['url']) ? $_GET['url'] : '';
+
+    $query = "SELECT * FROM all_credentials WHERE 1=1";
+    if (!empty($group_url)) {
+        $query .= " AND group_name COLLATE utf8mb4_general_ci LIKE '%$group_url%'";
+    }
+    if (!empty($url)) {
+        $query .= " AND url COLLATE utf8mb4_general_ci LIKE '%$url%'";
+    }
+
+    $result = $conn->query($query);
+
+    $output = fopen("php://output", "w");
+
+    // Optional: customize header row
+    fputcsv($output, ['Date', 'Name', 'Group Name', 'URL', 'Id', 'Password', 'Phone No.', 'Email']);
+
+    while ($row = $result->fetch_assoc()) {
+        fputcsv($output, [$row['date'], $row['name'], $row['group_name'], $row['url'], $row['id'], $row['password'], $row['phone_no'], $row['mail_id']]);
+    }
+
+    fclose($output);
+    exit;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>All Credentials</title>
@@ -120,6 +154,9 @@ $result = $conn->query($sql);
                     <a href="all_credential.php" style="display: inline-block; padding: 6px 12px; background-color: #f44336; color: white; text-decoration: none; border-radius: 4px; margin-left: 10px;">
                         Clear
                     </a>
+                    <button type="submit" name="export" value="1" onclick="exportFiltered()" style="margin-left: 10px; padding: 6px 12px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;">
+                        Export CSV
+                    </button>
                 </form>
 
                 <div class="card mt-4">
@@ -214,6 +251,19 @@ $result = $conn->query($sql);
             </div>
         </div>
     </div>
+    <script>
+        function exportFiltered() {
+            const groupUrl = encodeURIComponent(document.querySelector('input[name="group_name"]').value);
+            const url = encodeURIComponent(document.querySelector('input[name="url"]').value);
+            let query = `?export=1`;
+
+            if (groupUrl) query += `&group_name=${groupUrl}`;
+            if (url) query += `&url=${url}`;
+
+            window.location.href = 'all_credential.php' + query;
+        }
+    </script>
 
 </body>
+
 </html>
