@@ -1,0 +1,106 @@
+body {
+  background: #4e54c8;
+  font-family: Arial, sans-serif;
+}
+
+.form-container {
+  background-color: #c9cbf5;
+  padding: 30px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1500px;
+  margin: 50px auto;
+  color: #333;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.form-group input[type="url"] {
+  border: 2px solid #ccc;
+}
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.reset-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.span-2 select,
+.span-2 input {
+  padding: 8px;
+  max-width: 160px;
+}
+
+.compact-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.compact-row .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.compact-row label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.compact-row select,
+.compact-row input {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.last-row {
+  margin-top: 10px;
+}
