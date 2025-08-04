@@ -157,6 +157,10 @@ if (isset($_GET['export'])) {
                     <button type="submit" name="export" value="1" onclick="exportFiltered()" style="margin-left: 10px; padding: 6px 12px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;">
                         Export CSV
                     </button>
+                    <button type="submit" name="import" value="1" onclick="importFiltered()" style="margin-left: 10px; padding: 6px 12px; background-color: #7f83de; color: white; border: none; border-radius: 4px;">
+                         Import
+                        </button>
+
                 </form>
 
                 <div class="card mt-4">

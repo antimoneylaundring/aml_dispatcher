@@ -1,17 +1,17 @@
 body {
-  background: #4e54c8;
+  background: #7f83de;
   font-family: Arial, sans-serif;
 }
 
 .form-container {
   background-color: #c9cbf5;
-  padding: 30px 30px;
+  padding: 20px 20px;
   border-radius: 12px;
   width: 90%;
   max-width: 1500px;
   margin: 50px auto;
   color: #333;
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 5px rgb(0, 0, 0);
 }
 
 .form-container h2 {
@@ -65,7 +65,6 @@ body {
   background-color: #28a745;
   color: white;
 }
-
 .reset-btn {
   background-color: #dc3545;
   color: white;
@@ -104,3 +103,11 @@ body {
 .last-row {
   margin-top: 10px;
 }
+/* .home-button i {
+  font-size: 62px;
+  background: #f7f5f5;
+ -webkit-text-fill-color: rgb(247, 245, 245);
+  display: inline-block;
+  margin: 10px;
+  transition: transform 0.3s ease;
+} */
