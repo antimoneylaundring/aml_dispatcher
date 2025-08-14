@@ -13,17 +13,18 @@
 
 <body>
   <div class="form-container">
-    
+    <div style="display: flex;">
       <a href="index.php" class="home-button">
         <!-- <i class="fas fa-home" style="font-size: 62px; display: inline-block; margin: 10px; transition: transform 0.3s ease;"></i> -->
-        <i class="fas fa-home"
-          style="font-size: 30px; display: flex; margin: 10px;"></i>
+        <i class="fas fa-home" style="font-size: 30px; display: flex; margin: 10px;"></i>
       </a>
-      <button type="submit" name="ixport" value="1" onclick="importFiltered()"
-        style="margin-left: 10px; padding: 6px 12px; background-color: #7f83de; color: white; border: none; border-radius: 4px;">
+
+      <button type="submit" name="import" value="1" onclick="importFiltered()"
+        style="margin-left: 20px; padding: 6px 12px; background-color: #7f83de; color: white; border: none; border-radius: 4px;">
         Import
       </button>
-    <h2>Searching Form</h2>
+    </div>
+      <h2>Searching Form</h2>
     <form>
       <div class="form-grid">
         <!-- Regular Fields -->
