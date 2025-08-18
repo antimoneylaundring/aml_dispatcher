@@ -66,6 +66,7 @@ if (isset($_GET['export'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>All Credentials</title>
@@ -158,8 +159,8 @@ if (isset($_GET['export'])) {
                         Export CSV
                     </button>
                     <button type="submit" name="import" value="1" onclick="importFiltered()" style="margin-left: 10px; padding: 6px 12px; background-color: #7f83de; color: white; border: none; border-radius: 4px;">
-                         Import
-                        </button>
+                        Import
+                    </button>
 
                 </form>
 
