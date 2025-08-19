@@ -133,6 +133,34 @@ if (isset($_GET['export'])) {
             color: #aaa;
             font-weight: bold;
         }
+
+        .copy-cell {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* pushes text left & icon right */
+        }
+
+        .cell-text {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #444;
+            font-size: 14px;
+            margin-left: 8px;
+        }
+
+        .copy-btn:hover {
+            color: #000;
+        }
     </style>
 </head>
 
@@ -185,11 +213,22 @@ if (isset($_GET['export'])) {
                                         <td><?= htmlspecialchars($row['date']) ?></td>
                                         <td><?= htmlspecialchars($row['name']) ?></td>
                                         <td><?= htmlspecialchars($row['group_name']) ?></td>
-                                        <td class="truncate" title="<?= htmlspecialchars($row['url']) ?>">
+                                        <td style="width: 40%;" class="truncate" title="<?= htmlspecialchars($row['url']) ?>">
                                             <?= htmlspecialchars($row['url']) ?>
+                                            <button class="copy-btn" onclick="copyToClipboard('<?= htmlspecialchars($row['url'], ENT_QUOTES) ?>')">
+                                                <i class="fa-solid fa-copy"></i>
+                                            </button>
                                         </td>
-                                        <td><?= htmlspecialchars($row['id']) ?></td>
-                                        <td><?= htmlspecialchars($row['password']) ?></td>
+                                        <td><?= htmlspecialchars($row['id']) ?>
+                                            <button class="copy-btn" onclick="copyToClipboard('<?= htmlspecialchars($row['id'], ENT_QUOTES) ?>')">
+                                                <i class="fa-solid fa-copy"></i>
+                                            </button>
+                                        </td>
+                                        <td><?= htmlspecialchars($row['password']) ?>
+                                            <button class="copy-btn" onclick="copyToClipboard('<?= htmlspecialchars($row['password'], ENT_QUOTES) ?>')">
+                                                <i class="fa-solid fa-copy"></i>
+                                            </button>
+                                        </td>
                                         <td><?= htmlspecialchars($row['phone_no']) ?></td>
                                         <td><?= htmlspecialchars($row['mail_id']) ?></td>
                                     </tr>
@@ -266,6 +305,12 @@ if (isset($_GET['export'])) {
             if (url) query += `&url=${url}`;
 
             window.location.href = 'all_credential.php' + query;
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied: " + text);
+            });
         }
     </script>
 
