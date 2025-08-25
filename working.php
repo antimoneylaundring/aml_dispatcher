@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $category = $_POST['category'];
 
   // SQL query to insert data into database
-  $sql = "INSERT INTO website_searching (Databse, Date, Name, Url, Code, Search_for, Group_name, Mobile, Email, Login_id, Password, Multiple_upi, Phone_no, Remark3, Website_status, Website_redirection, Upi, Bank, Wallet, Net_banking, Card, Rupay, Not_found, Crypto, Origin, Category, Automated, Cred_name, Colour_prediction, Mobile_interface) 
+  $sql = "INSERT INTO website_searching (Database, Date, Name, Url, Code, Search_for, Group_name, Mobile, Email, Login_id, Password, Multiple_upi, Phone_no, Remark3, Website_status, Website_redirection, Upi, Bank, Wallet, Net_banking, Card, Rupay, Not_found, Crypto, Origin, Category, Automated, Cred_name, Colour_prediction, Mobile_interface) 
     VALUES ('NA', 'NA', 'NA','$url', '$inviteCode','$searchFor','$group','$mobile','$email','$loginId','$password','NA','NA','$remark3','$websiteStatus','NA','$upi', '$bank','$wallet','$netBanking','$card','$rupay','$notFound','$crypto', '$origin','$category','NA','NA','NA','NA')";
 
   if ($conn->query($sql) === TRUE) {
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         Import
       </button>
     </div>
-    <form>
+    <form method="POST">
       <div class="form-grid">
         <!-- Regular Fields -->
         <div class="form-group">
