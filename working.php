@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($conn->query($sql) === TRUE) {
     // header("Location: index.php");
-    header("Location: index.php");
+    header("Location: working.php");
     exit();
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -81,8 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-group">
           <label for="searchFor">Search For</label>
           <select id="searchFor" name="searchFor">
-            <option>Web</option>
-            <option>App</option>
+            <option value="Web">Web</option>
+            <option value="App">App</option>
           </select>
         </div>
         <div class="form-group">
@@ -116,30 +116,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Remark3 updated with blank default -->
         <div class="form-group">
           <label for="remark3">Remark3</label>
-          <select id="remark3" name="remark3">
-            <option value="">-- Select --</option>
+          <select id="remark3" name="remark3" required>
+            <option value="NA">-- Select --</option>
             <option value="Otp">Otp Issue</option>
-            <option>Login Issue</option>
-            <option>Signup Issue</option>
-            <option>Website Not Working</option>
-            <option>Payment Method Not Found</option>
-            <option>Deposit Section Not Working</option>
-            <option>Whatsapp</option>
-            <option>Invitation Code Required</option>
-            <option>All Number Registered</option>
-            <option>All Mail Registered</option>
-            <option>Country Restricted</option>
-            <option>Website Redirect</option>
-            <option>Real Id Verification</option>
-            <option>App</option>
+            <option value="Login Issue">Login Issue</option>
+            <option value="Signup Issue">Signup Issue</option>
+            <option value="Website Not Working">Website Not Working</option>
+            <option value="Payment Method Not Found">Payment Method Not Found</option>
+            <option value="Deposit Section Not Working">Deposit Section Not Working</option>
+            <option value="Whatsapp">Whatsapp</option>
+            <option value="Invitation Code Required">Invitation Code Required</option>
+            <option value="All Number Registered">All Number Registered</option>
+            <option value="All Mail Registered">All Mail Registered</option>
+            <option value="Country Restricted">Country Restricted</option>
+            <option value="Website Redirect">Website Redirect</option>
+            <option value="Real Id Verification">Real Id Verification</option>
+            <option value="App">App</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="websiteStatus">Website Status</label>
           <select id="websiteStatus" name="websiteStatus">
-            <option>Found</option>
-            <option>Not Found</option>
+            <option value="Found">Found</option>
+            <option value="Not Found">Not Found</option>
           </select>
         </div>
       </div>
@@ -149,57 +149,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-group span-2">
           <label for="upi">UPI</label>
           <select id="upi" name="upi">
-            <option>No</option>
-            <option>Yes</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
         </div>
         <div class="form-group span-2">
           <label for="bank">Bank</label>
           <select id="bank" name="bank">
-            <option>No</option>
-            <option>Yes</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
         </div>
         <div class="form-group span-2">
           <label for="wallet">Wallet</label>
           <select id="wallet" name="wallet">
-            <option>No</option>
-            <option>Yes</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
         </div>
         <div class="form-group span-2">
           <label for="netBanking">Net Banking</label>
           <select id="netBanking" name="netBanking">
-            <option>No</option>
-            <option>Yes</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
         </div>
         <div class="form-group span-2">
           <label for="card">Card</label>
           <select id="card" name="card">
-            <option>No</option>
-            <option>Yes</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
         </div>
         <div class="form-group span-2">
           <label for="rupay">Rupay</label>
           <select id="rupay" name="rupay">
-            <option>No</option>
-            <option>Yes</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
         </div>
         <div class="form-group span-2">
           <label for="notFound">Not Found</label>
           <select id="notFound" name="notFound">
-            <option>No</option>
-            <option>Yes</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
         </div>
         <div class="form-group span-2">
           <label for="crypto">Crypto</label>
           <select id="crypto" name="crypto">
-            <option>No</option>
-            <option>Yes</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
         </div>
       </div>
@@ -214,86 +214,86 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="form-group">
           <label for="origin">Origin</label>
-          <select id="origin" name="origin">
-            <option value="">-- Select Origin --</option>
-            <option>AFGHANISTAN</option>
-            <option>ALAND ISLANDS</option>
-            <option>ALGERIA</option>
-            <option>AMERICAN SAMOA</option>
-            <option>ARMENIA</option>
-            <option>AUSTRALIA</option>
-            <option>BAHAMAS</option>
-            <option>BANGLADESH</option>
-            <option>BELGIUM</option>
-            <option>BELIZE</option>
-            <option>BRAZIL</option>
-            <option>BULGARIA</option>
-            <option>CAMBODIA</option>
-            <option>CANADA</option>
-            <option>CHINA</option>
-            <option>COSTA RICA</option>
-            <option>CURACAO</option>
-            <option>CYPRUS</option>
-            <option>CZECH REPUBLIC</option>
-            <option>FINLAND</option>
-            <option>FRANCE</option>
-            <option>GEORGIA</option>
-            <option>GERMANY</option>
-            <option>GREAT BRITAIN</option>
-            <option>HONG KONG</option>
-            <option>ICELAND</option>
-            <option>INDIA</option>
-            <option>INDONESIA</option>
-            <option>IRAN</option>
-            <option>ISLAND</option>
-            <option>ITALY</option>
-            <option>JAPAN</option>
-            <option>LAOS</option>
-            <option>LATVIA</option>
-            <option>LITHUANIA</option>
-            <option>LUXEMBOURG</option>
-            <option>MACAO</option>
-            <option>MALAYSIA</option>
-            <option>MALTA</option>
-            <option>MAURITIUS</option>
-            <option>MOROCCO</option>
-            <option>MYANMAR</option>
-            <option>NETHERLANDS</option>
-            <option>PANAMA</option>
-            <option>PHILIPPINES</option>
-            <option>RUSSIA</option>
-            <option>SEYCHELLES</option>
-            <option>SINGAPORE</option>
-            <option>SLOVAKIA</option>
-            <option>SOUTH AFRICA</option>
-            <option>SOUTH KOREA</option>
-            <option>SWEDEN</option>
-            <option>TAIWAN</option>
-            <option>UGANDA</option>
-            <option>UKRAINE</option>
-            <option>UNITED ARAB EMIRATES</option>
-            <option>UNITED KINGDOM</option>
-            <option>UNITED STATES OF AMERICA</option>
-            <option>VIETNAM</option>
-          </select>
-        </div>
+          <select id="origin" name="origin" required>
+            <option value="" disabled selected>-- Select Origin --</option>
+            <option value="AFGHANISTAN">AFGHANISTAN</option>
+            <option value="ALAND ISLANDS">ALAND ISLANDS</option>
+            <option value="ALGERIA">ALGERIA</option>
+            <option value="AMERICAN SAMOA">AMERICAN SAMOA</option>
+            <option value="ARMENIA">ARMENIA</option>
+            <option value="AUSTRALIA">AUSTRALIA</option>
+            <option value="BAHAMAS">BAHAMAS</option>
+            <option value="BANGLADESH">BANGLADESH</option>
+            <option value="BELGIUM">BELGIUM</option>
+            <option value="BELIZE">BELIZE</option>
+            <option value="BRAZIL">BRAZIL</option>
+            <option value="BULGARIA">BULGARIA</option>
+            <option value="CAMBODIA">CAMBODIA</option>
+            <option value="CANADA">CANADA</option>
+            <option value="CHINA">CHINA</option>
+            <option value="COSTA RICA">COSTA RICA</option>
+            <option value="CURACAO">CURACAO</option>
+            <option value="CYPRUS">CYPRUS</option>
+            <option value="CZECH REPUBLIC">CZECH REPUBLIC</option>
+            <option value="FINLAND">FINLAND</option>
+            <option value="FRANCE">FRANCE</option>
+            <option value="GEORGIA">GEORGIA</option>
+            <option value="GERMANY">GERMANY</option>
+            <option value="GREAT BRITAIN">GREAT BRITAIN</option>
+            <option value="HONG KONG">HONG KONG</option>
+            <option value="ICELAND">ICELAND</option>
+            <option value="INDIA">INDIA</option>
+            <option value="INDONESIA">INDONESIA</option>
+            <option value="IRAN">IRAN</option>
+            <option value="ISLAND">ISLAND</option>
+            <option value="ITALY">ITALY</option>
+            <option value="JAPAN">JAPAN</option>
+            <option value="LAOS">LAOS</option>
+            <option value="LATVIA">LATVIA</option>
+            <option value="LITHUANIA">LITHUANIA</option>
+            <option value="LUXEMBOURG">LUXEMBOURG</option>
+            <option value="MACAO">MACAO</option>
+            <option value="MALAYSIA">MALAYSIA</option>
+            <option value="MALTA">MALTA</option>
+            <option value="MAURITIUS">MAURITIUS</option>
+            <option value="MOROCCO">MOROCCO</option>
+            <option value="MYANMAR">MYANMAR</option>
+            <option value="NETHERLANDS">NETHERLANDS</option>
+            <option value="PANAMA">PANAMA</option>
+            <option value="PHILIPPINES">PHILIPPINES</option>
+            <option value="RUSSIA">RUSSIA</option>
+            <option value="SEYCHELLES">SEYCHELLES</option>
+            <option value="SINGAPORE">SINGAPORE</option>
+            <option value="SLOVAKIA">SLOVAKIA</option>
+            <option value="SOUTH AFRICA">SOUTH AFRICA</option>
+            <option value="SOUTH KOREA">SOUTH KOREA</option>
+            <option value="SWEDEN">SWEDEN</option>
+            <option value="TAIWAN">TAIWAN</option>
+            <option value="UGANDA">UGANDA</option>
+            <option value="UKRAINE">UKRAINE</option>
+            <option value="UNITED ARAB EMIRATES">UNITED ARAB EMIRATES</option>
+            <option value="UNITED KINGDOM">UNITED KINGDOM</option>
+            <option value="UNITED STATES OF AMERICA">UNITED STATES OF AMERICA</option>
+            <option value="VIETNAM">VIETNAM</option>
+            </select>
+          </div>
 
 
         <div class="form-group">
           <label for="category">Category</label>
-          <select id="category" name="category">
-            <option value="">-- Select Category --</option>
-            <option>Gambling</option>
-            <option>Betting</option>
-            <option>Gambling/Betting</option>
-            <option>Gaming</option>
-            <option>Investment</option>
-            <option>Forex Trading</option>
-            <option>Forex/Crypto Trading</option>
-            <option>Lottery</option>
-            <option>Teenpatti</option>
-            <option>Crypto Trading</option>
-            <option>Mystery Box</option>
+          <select id="category" name="category" required>
+             <option value="" disabled selected>-- Select Category --</option>
+             <option value="Gambling">Gambling</option>
+             <option value="Betting">Betting</option>
+             <option value="Gambling/Betting">Gambling/Betting</option>
+             <option value="Gaming">Gaming</option>
+             <option value="Investment">Investment</option>
+             <option value="Forex Trading">Forex Trading</option>
+             <option value="Forex/Crypto Trading">Forex/Crypto Trading</option>
+             <option value="Lottery">Lottery</option>
+             <option value="Teenpatti">Teenpatti</option>
+             <option value="Crypto Trading">Crypto Trading</option>
+            <option value="Mystery Box">Mystery Box</option>
           </select>
         </div>
       </div>
