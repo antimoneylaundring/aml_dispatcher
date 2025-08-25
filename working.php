@@ -38,8 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
   $conn->close();
-
-
 }
 ?>
 
@@ -76,13 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <label for="url">URL (https)</label>
           <input type="url" id="url" name="url" placeholder="https://example.com" required pattern="https://.*">
         </div>
-
-
         <div class="form-group">
           <label for="invite">Invite Code</label>
           <input type="text" id="invite" name="invite">
         </div>
-
         <div class="form-group">
           <label for="searchFor">Search For</label>
           <select id="searchFor" name="searchFor">
@@ -90,48 +85,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <option>App</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="group">Group/App Name</label>
           <input type="text" id="group" name="group">
         </div>
-
         <div class="form-group">
           <label for="mobile">Mobile</label>
           <input type="tel" id="mobile" name="mobile" placeholder="1234567890">
         </div>
-
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="example@mail.com">
         </div>
-
         <div class="form-group">
           <label for="loginId">Login ID</label>
           <input type="text" id="loginId" name="loginId">
         </div>
-
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" id="password" name="password">
         </div>
-
         <div class="form-group">
           <label for="remark1">Remark1</label>
           <input type="text" id="remark1" name="remark1">
         </div>
-
         <div class="form-group">
           <label for="remark2">Remark2</label>
           <input type="text" id="remark2" name="remark2">
         </div>
-
         <!-- Remark3 updated with blank default -->
         <div class="form-group">
           <label for="remark3">Remark3</label>
           <select id="remark3" name="remark3">
             <option value="">-- Select --</option>
-            <option>Otp Issue</option>
+            <option value="Otp">Otp Issue</option>
             <option>Login Issue</option>
             <option>Signup Issue</option>
             <option>Website Not Working</option>
