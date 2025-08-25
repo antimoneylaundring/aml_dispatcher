@@ -1,4 +1,49 @@
-<?php include 'includes/db.php'; ?>
+<?php include 'includes/db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Retrieve form data
+  $url = $_POST['url'];
+  $inviteCode = $_POST['invite'];
+  $searchFor = $_POST['searchFor'];
+  $group = $_POST['group'];
+  $mobile = $_POST['mobile'];
+  $email = $_POST['email'];
+  $loginId = $_POST['loginId'];
+  $password = $_POST['password'];
+  $remark1 = $_POST['remark1'];
+  $remark2 = $_POST['remark2'];
+  $remark3 = $_POST['remark3'];
+  $websiteStatus = $_POST['websiteStatus'];
+  $upi = $_POST['upi'];
+  $bank = $_POST['bank'];
+  $wallet = $_POST['wallet'];
+  $netBanking = $_POST['netBanking'];
+  $card = $_POST['card'];
+  $rupay = $_POST['rupay'];
+  $notFound = $_POST['notFound'];
+  $crypto = $_POST['crypto'];
+  $redirect = $_POST['redirect'];
+  $origin = $_POST['origin'];
+  $category = $_POST['category'];
+
+  // SQL query to insert data into database
+  $sql = "INSERT INTO website_searching (Databse, Date, Name, Url, Code, Search_for, Group_name, Mobile, Email, Login_id, Password, Multiple_upi, Phone_no, Remark3, Website_status, Website_redirection, Upi, Bank, Wallet, Net_banking, Card, Rupay, Not_found, Crypto, Origin, Category, Automated, Cred_name, Colour_prediction, Mobile_interface) 
+    VALUES ('NA', 'NA', 'NA','$url', '$inviteCode','$searchFor','$group','$mobile','$email','$loginId','$password','NA','NA','$remark3','$websiteStatus','NA','$upi', '$bank','$wallet','$netBanking','$card','$rupay','$notFound','$crypto', '$origin','$category','NA','NA','NA','NA')";
+
+  if ($conn->query($sql) === TRUE) {
+    // header("Location: index.php");
+    header("Location: index.php");
+    exit();
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+  $conn->close();
+
+
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +65,7 @@
       </a>
       <h2>Searching Form</h2>
       <button type="submit" name="import" value="1" onclick="importFiltered()"
-        style="padding: 6px 12px; background-color: #7f83de; color: white; border: none; border-radius: 4px;">
+        style="padding: 3px 12px; background-color: #7f83de; color: white; border: none; border-radius: 4px;">
         Import
       </button>
     </div>
