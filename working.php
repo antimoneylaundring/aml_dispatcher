@@ -27,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $category = $_POST['category'];
 
   // SQL query to insert data into database
-  $sql = "INSERT INTO website_searching (Database, Date, Name, Url, Code, Search_for, Group_name, Mobile, Email, Login_id, Password, Multiple_upi, Phone_no, Remark3, Website_status, Website_redirection, Upi, Bank, Wallet, Net_banking, Card, Rupay, Not_found, Crypto, Origin, Category, Automated, Cred_name, Colour_prediction, Mobile_interface) 
-    VALUES ('NA', 'NA', 'NA','$url', '$inviteCode','$searchFor','$group','$mobile','$email','$loginId','$password','NA','NA','$remark3','$websiteStatus','NA','$upi', '$bank','$wallet','$netBanking','$card','$rupay','$notFound','$crypto', '$origin','$category','NA','NA','NA','NA')";
+  $sql = "INSERT INTO website_searching (`Database`, `Date`, `Name`, `Url`, `Code`, `Search_for`, `Group_name`, `Mobile`, `Email`, `Login_id`, `Password`, `Multiple_upi`, `Phone_no`, `Remark_3`, `Website_status`, `Website_Redirection`, `UPI`, `Bank`, `Wallet`, `Net_banking`, `Card`, `Rupay`, `Not_Found`, `Crypto`, `Origin`, `Category`, `Automated`, `Cred_name`, `Cred_date`, `Colour_prediction`, `Mobile_interface`) 
+    VALUES ('NA', CURDATE(), 'NA','$url', '$inviteCode','$searchFor','$group','$mobile','$email','$loginId','$password','NA','NA','$remark3','$websiteStatus','$redirect','$upi', '$bank','$wallet','$netBanking','$card','$rupay','$notFound','$crypto', '$origin','$category','NA','NA',CURDATE(),'NA','NA')";
 
   if ($conn->query($sql) === TRUE) {
     // header("Location: index.php");
@@ -140,6 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <select id="websiteStatus" name="websiteStatus">
             <option value="Found">Found</option>
             <option value="Not Found">Not Found</option>
+            <option value="NA">NA</option>
           </select>
         </div>
       </div>
