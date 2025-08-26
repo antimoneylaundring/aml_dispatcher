@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($conn->query($sql) === TRUE) {
     // header("Location: index.php");
-    header("Location: working.php");
+    header("Location: searching_form.php");
     exit();
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
   <div class="form-container">
     <div style="display: flex; justify-content: space-between;">
-      <a href="index.php" class="home-button">
+      <a href="searching_data.php" class="home-button">
         <!-- <i class="fas fa-home" style="font-size: 62px; display: inline-block; margin: 10px; transition: transform 0.3s ease;"></i> -->
         <i class="fas fa-home" style="font-size: 30px; display: flex; margin: 10px;"></i>
       </a>

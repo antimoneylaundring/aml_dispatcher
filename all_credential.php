@@ -172,8 +172,6 @@ if (isset($_GET['export'])) {
 
         <!-- Main Content -->
         <div class="main-content flex-grow-1">
-            <!-- <?php include 'includes/topbar.php'; ?> -->
-
             <div class="container">
                 <h3>All Credentials</h3>
                 <form method="GET" style="margin-bottom: 20px;">
@@ -235,61 +233,61 @@ if (isset($_GET['export'])) {
                                 <?php endwhile; ?>
                             </tbody>
                         </table>
-                        <div class="pagination">
-                            <?php if ($page > 1): ?>
-                                <a href="?page=<?= $page - 1 ?>&<?= $query_string ?>">&laquo; Prev</a>
-                            <?php endif; ?>
+                    </div>
+                    <div class="pagination">
+                        <?php if ($page > 1): ?>
+                            <a href="?page=<?= $page - 1 ?>&<?= $query_string ?>">&laquo; Prev</a>
+                        <?php endif; ?>
 
-                            <?php
-                            $visible_pages = [];
+                        <?php
+                        $visible_pages = [];
 
-                            // Always show first 3
-                            for ($i = 1; $i <= 3; $i++) {
+                        // Always show first 3
+                        for ($i = 1; $i <= 3; $i++) {
+                            $visible_pages[] = $i;
+                        }
+
+                        // Show 3 before and after current page
+                        for ($i = $page - 2; $i <= $page + 2; $i++) {
+                            if ($i > 0 && $i <= $total_pages) {
                                 $visible_pages[] = $i;
                             }
+                        }
 
-                            // Show 3 before and after current page
-                            for ($i = $page - 2; $i <= $page + 2; $i++) {
-                                if ($i > 0 && $i <= $total_pages) {
-                                    $visible_pages[] = $i;
-                                }
+                        // Always show last 3
+                        for ($i = $total_pages - 2; $i <= $total_pages; $i++) {
+                            if ($i > 0) {
+                                $visible_pages[] = $i;
+                            }
+                        }
+
+                        // Remove duplicates and sort
+                        $visible_pages = array_unique($visible_pages);
+                        sort($visible_pages);
+
+                        $prev = 0;
+                        foreach ($visible_pages as $page):
+                            if ($prev != 0 && $page != $prev + 1) {
+                                echo "<span class='dots'>...</span>";
                             }
 
-                            // Always show last 3
-                            for ($i = $total_pages - 2; $i <= $total_pages; $i++) {
-                                if ($i > 0) {
-                                    $visible_pages[] = $i;
-                                }
+                            if ($page == $page) {
+                                $query_string = http_build_query([
+                                    'group_name' => $_GET['group_name'] ?? '',
+                                    'url' => $_GET['url'] ?? ''
+                                ]);
+                                echo "<a class='active' href='?page=$page&$query_string'>$page</a>";
+                            } else {
+                                echo "<a href='?page=$page&$query_string'>$page</a>";
                             }
 
-                            // Remove duplicates and sort
-                            $visible_pages = array_unique($visible_pages);
-                            sort($visible_pages);
+                            $prev = $page;
+                        endforeach;
+                        ?>
 
-                            $prev = 0;
-                            foreach ($visible_pages as $page):
-                                if ($prev != 0 && $page != $prev + 1) {
-                                    echo "<span class='dots'>...</span>";
-                                }
-
-                                if ($page == $page) {
-                                    $query_string = http_build_query([
-                                        'group_name' => $_GET['group_name'] ?? '',
-                                        'url' => $_GET['url'] ?? ''
-                                    ]);
-                                    echo "<a class='active' href='?page=$page&$query_string'>$page</a>";
-                                } else {
-                                    echo "<a href='?page=$page&$query_string'>$page</a>";
-                                }
-
-                                $prev = $page;
-                            endforeach;
-                            ?>
-
-                            <?php if ($page < $total_pages): ?>
-                                <a href="?page=<?= $page + 1 ?>&<?= $query_string ?>">Next &raquo;</a>
-                            <?php endif; ?>
-                        </div>
+                        <?php if ($page < $total_pages): ?>
+                            <a href="?page=<?= $page + 1 ?>&<?= $query_string ?>">Next &raquo;</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
