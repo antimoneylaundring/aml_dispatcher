@@ -78,11 +78,11 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-    <div class="d-flex">
+    <div class="d-flex flex-row">
         <?php include 'includes/sidebar.php'; ?>
 
         <div class="main-content flex-grow-1">
-            <div class="container-fluid">
+            <div>
                 <h3 class="mb-3">All Website Data</h3>
                 <div class="card mt-4 w-100">
                     <div class="card-body table-responsive">
@@ -161,7 +161,6 @@ $result = $conn->query($sql);
                             </tbody>
                         </table>
                     </div>
-
                     <!-- Pagination -->
                     <nav>
                         <ul class="pagination">

@@ -184,7 +184,8 @@ if (isset($_GET['export'])) {
                     <button type="submit" name="export" value="1" onclick="exportFiltered()" style="margin-left: 10px; padding: 6px 12px; background-color: #4CAF50; color: white; border: none; border-radius: 4px;">
                         Export CSV
                     </button>
-                    <button type="submit" name="import" value="1" onclick="importFiltered()" style="margin-left: 10px; padding: 6px 12px; background-color: #7f83de; color: white; border: none; border-radius: 4px;">
+                    <button type="button" name="import" value="1" onclick="importFiltered()" style="margin-left: 10px; padding: 6px 12px; background-color: #7f83de; color: white; border: none; border-radius: 4px;" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
                         Import
                     </button>
 
@@ -253,14 +254,11 @@ if (isset($_GET['export'])) {
                                 $visible_pages[] = $i;
                             }
                         }
-
-                        // Always show last 3
                         for ($i = $total_pages - 2; $i <= $total_pages; $i++) {
                             if ($i > 0) {
                                 $visible_pages[] = $i;
                             }
                         }
-
                         // Remove duplicates and sort
                         $visible_pages = array_unique($visible_pages);
                         sort($visible_pages);
@@ -290,6 +288,36 @@ if (isset($_GET['export'])) {
                         <?php endif; ?>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Import Data</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="includes/import.php" enctype="multipart/form-data">
+                    <div class="modal-body mx-3">
+                        <div class="md-form mt-3 mb-5">
+                            <label for="csv_file">Select CSV File</label>
+                            <div class="input-group">
+                                <label for="csv_file" class="input-group-btn">
+                                    <span class="btn btn-primary">
+                                        Browse...
+                                        <input type="file" name="csv_file" id="csv_file" style="display:none;" required>
+                                    </span>
+                                </label>
+                                <input type="text" id="file_name" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <input type="submit" class="btn btn-outline-primary" name="importCSVFileButton"
+                            id="importCSVFileButton" value="IMPORT">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
